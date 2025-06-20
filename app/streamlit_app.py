@@ -36,11 +36,11 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Main App
-st.title("🧠 Real-Time Media Bias Classifier")
+st.title(" Real-Time Media Bias Classifier")
 st.markdown("Enter a news headline and find out if it leans **Left**, **Right**, or is **Neutral**.")
 
 st.markdown("---")
-headline = st.text_input("✍️ Enter News Headline:")
+headline = st.text_input("✍ Enter News Headline:")
 
 if st.button("Detect Bias"):
     if headline.strip() == "":
@@ -51,5 +51,5 @@ if st.button("Detect Bias"):
             outputs = model(**inputs)
             probs = torch.nn.functional.softmax(outputs.logits, dim=1)
             pred = torch.argmax(probs, dim=1).item()
-            st.success(f"🎯 **Predicted Bias: `{labels[pred].upper()}`**")
+            st.success(f" **Predicted Bias: `{labels[pred].upper()}`**")
             st.progress(probs[0][pred].item())
